@@ -1,54 +1,28 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-int main(){
-
-    cout<<"enter the size of square matrix : ";
+int main() {
     int n;
-    cin>>n;
+    cout << "Enter size: ";
+    cin >> n;
 
-    int t=((n*n)+n)/2; // total number of elements
-    int arr[t];
+    int size = n * (n + 1) / 2;
+    int upper[size];
 
-    for (int i = 0; i < t; i++)
-    {
-        cout<<"enter the "<<i+1<<" element of the upper traingular matrix : ";
-        cin>>arr[i];
+    cout << "Enter " << size << " elements (row-wise):\n";
+    for (int i = 0; i < size; i++) {
+        cin >> upper[i];
     }
-    
-    // the element array
-    cout<<"the element array is : ";
-    for (int i = 0; i < t; i++)
-    {
-        cout<<arr[i]<<" ";
-    }
-    cout<<endl;
 
-    // the upper trangular matrix is;
-
-    int x = 0;
-    int arr_ltm[n][n];
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j<  n; j++)
-        {
-            if (i<=j)
-            {
-                arr_ltm[i][j]=arr[x];
-                x++;
-            }
-            else{
-                arr_ltm[i][j]=0;
-            }
+    cout << "Matrix:\n";
+    int k = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (i <= j)
+                cout << upper[i * n - i * (i - 1) / 2 + (j - i)] << " ";
+            else
+                cout << 0 << " ";
         }
-    }
-    cout<<"the upper triangular matrix is :"<<endl;
-    for (size_t i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            cout<<arr_ltm[i][j]<<" ";
-        }
-        cout<<endl;
+        cout << endl;
     }
 }
